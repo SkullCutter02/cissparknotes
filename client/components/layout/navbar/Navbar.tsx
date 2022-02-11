@@ -15,7 +15,6 @@ import { useQuery } from "react-query";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-import INavItem from "../../../types/navItem.interface";
 import getSubjectsWithSections from "../../../queries/getSubjectsWithSections";
 import IResponse from "../../../types/response.interface";
 import IResponseData from "../../../types/responseData.interface";

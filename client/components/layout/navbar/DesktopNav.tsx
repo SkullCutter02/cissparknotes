@@ -1,7 +1,7 @@
 import React from "react";
 import {
   Box,
-  Link,
+  Link as ChakraLink,
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -27,9 +27,8 @@ const DesktopNav: React.FC<Props> = ({ navItems }) => {
         <Box key={navItem.label}>
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
-              <Link
+              <ChakraLink
                 p={2}
-                href={navItem.href ?? "#"}
                 fontSize={"15"}
                 fontWeight={500}
                 color={linkColor}
@@ -39,7 +38,7 @@ const DesktopNav: React.FC<Props> = ({ navItems }) => {
                 }}
               >
                 {navItem.label}
-              </Link>
+              </ChakraLink>
             </PopoverTrigger>
 
             {navItem.children && (
