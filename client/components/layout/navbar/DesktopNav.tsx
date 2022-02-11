@@ -30,7 +30,7 @@ const DesktopNav: React.FC<Props> = ({ navItems }) => {
               <Link
                 p={2}
                 href={navItem.href ?? "#"}
-                fontSize={"sm"}
+                fontSize={"15"}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -53,7 +53,7 @@ const DesktopNav: React.FC<Props> = ({ navItems }) => {
               >
                 <Stack>
                   {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} navItem={navItem} />
+                    <DesktopSubNav key={child.label} navItem={child} />
                   ))}
                 </Stack>
               </PopoverContent>

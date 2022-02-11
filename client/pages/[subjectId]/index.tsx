@@ -11,6 +11,7 @@ import ISubject from "../../types/subject.interface";
 import MainContainer from "../../components/ui/MainContainer";
 import { Heading, VStack } from "@chakra-ui/react";
 import Section from "../../components/ui/section/Section";
+import getSubjectsWithSections from "../../queries/getSubjectsWithSections";
 
 type Data = IResponse<IResponseData<ISubject>>;
 
@@ -41,6 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery(["sections", subjectId], () => getSubject(subjectId));
+  await queryClient.prefetchQuery("subjects-nav", () => getSubjectsWithSections());
 
   return {
     props: {

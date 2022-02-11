@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Box,
   Flex,
@@ -9,14 +9,41 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useQuery } from "react-query";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import INavItem from "../../../types/navItem.interface";
+import getSubjectsWithSections from "../../../queries/getSubjectsWithSections";
+import IResponse from "../../../types/response.interface";
+import IResponseData from "../../../types/responseData.interface";
+import ISubject from "../../../types/subject.interface";
+
+type Data = IResponse<IResponseData<ISubject>[]>;
 
 const Navbar: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
+
+  const {
+    data: { data },
+  } = useQuery<Data>("subjects-nav", () => getSubjectsWithSections());
+
+  const navItems = useMemo(() => {
+    return data.map((subjectsData) => {
+      return {
+        label: subjectsData.attributes.name,
+        href: `/${subjectsData.id}`,
+        children: subjectsData.attributes.sections.data.map((sectionData) => {
+          return {
+            label: sectionData.attributes.name,
+            href: `/${subjectsData.id}/${sectionData.id}`,
+          };
+        }),
+      };
+    });
+  }, []);
 
   return (
     <Box>
@@ -40,13 +67,16 @@ const Navbar: React.FC = () => {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-            火花筆記
-          </Text>
+          <Link href={"/"}>
+            <Text
+              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              fontFamily={"heading"}
+              color={useColorModeValue("gray.800", "white")}
+              cursor={"pointer"}
+            >
+              火花筆記
+            </Text>
+          </Link>
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav navItems={navItems} />
@@ -62,44 +92,44 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-const navItems: Array<INavItem> = [
-  {
-    label: "Inspiration",
-    children: [
-      {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
-      },
-      {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Find Work",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
-  },
-  {
-    label: "Learn Design",
-    href: "#",
-  },
-  {
-    label: "Hire Designers",
-    href: "#",
-  },
-];
+//
+// const navItems: Array<INavItem> = [
+//   {
+//     label: "Inspiration",
+//     children: [
+//       {
+//         label: "Explore Design Work",
+//         subLabel: "Trending Design to inspire you",
+//         href: "#",
+//       },
+//       {
+//         label: "New & Noteworthy",
+//         subLabel: "Up-and-coming Designers",
+//         href: "#",
+//       },
+//     ],
+//   },
+//   {
+//     label: "Find Work",
+//     children: [
+//       {
+//         label: "Job Board",
+//         subLabel: "Find your dream design job",
+//         href: "#",
+//       },
+//       {
+//         label: "Freelance Projects",
+//         subLabel: "An exclusive list for contract work",
+//         href: "#",
+//       },
+//     ],
+//   },
+//   {
+//     label: "Learn Design",
+//     href: "#",
+//   },
+//   {
+//     label: "Hire Designers",
+//     href: "#",
+//   },
+// ];

@@ -7,22 +7,22 @@ interface Props {
   navItem: INavItem;
 }
 
-const DesktopSubNav: React.FC<Props> = ({ navItem: { href, subLabel, label } }) => {
+const DesktopSubNav: React.FC<Props> = ({ navItem }) => {
   return (
     <Link
-      href={href}
+      href={navItem.href}
       role={"group"}
       display={"block"}
       p={2}
       rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      _hover={{ bg: useColorModeValue("teal.50", "gray.900") }}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
-          <Text transition={"all .3s ease"} _groupHover={{ color: "pink.400" }} fontWeight={500}>
-            {label}
+          <Text transition={"all .3s ease"} _groupHover={{ color: "teal.400" }} fontWeight={500}>
+            {navItem.label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          <Text fontSize={"sm"}>{navItem.subLabel}</Text>
         </Box>
         <Flex
           transition={"all .3s ease"}
@@ -33,7 +33,7 @@ const DesktopSubNav: React.FC<Props> = ({ navItem: { href, subLabel, label } }) 
           align={"center"}
           flex={1}
         >
-          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={"teal.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
