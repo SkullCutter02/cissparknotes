@@ -10,10 +10,10 @@ import {
 } from "@chakra-ui/react";
 
 import DesktopSubNav from "./DesktopSubNav";
-import NavItem from "../../../types/navItem.interface";
+import INavItem from "../../../types/navItem.interface";
 
 interface Props {
-  navItems: NavItem[];
+  navItems: INavItem[];
 }
 
 const DesktopNav: React.FC<Props> = ({ navItems }) => {

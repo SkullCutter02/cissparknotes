@@ -1,4 +1,4 @@
-export default interface Image {
+export default interface IImage {
   data: {
     id: number;
     attributes: {
@@ -8,10 +8,10 @@ export default interface Image {
       width: number;
       height: number;
       formats: {
-        thumbnail: Format;
-        large: Format;
-        medium: Format;
-        small: Format;
+        thumbnail: IFormat;
+        large: IFormat;
+        medium: IFormat;
+        small: IFormat;
       };
       hash: string;
       ext: string;
@@ -27,7 +27,7 @@ export default interface Image {
   };
 }
 
-interface Format {
+interface IFormat {
   name: string;
   hash: string;
   ext: string;

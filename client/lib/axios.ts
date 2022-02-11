@@ -4,7 +4,7 @@ import axios from "axios";
 import HOST from "../constants/host";
 
 const instance = axios.create({
-  baseURL: HOST,
+  baseURL: HOST + "/api",
   headers: {
     "Content-Type": "application/json",
   },

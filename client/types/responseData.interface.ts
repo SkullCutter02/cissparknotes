@@ -1,4 +1,4 @@
-export default interface ResponseData<T> {
+export default interface IResponseData<T> {
   id: number;
   attributes: T;
 }

@@ -2,10 +2,10 @@ import React from "react";
 import { Stack, useColorModeValue } from "@chakra-ui/react";
 
 import MobileNavItem from "./MobileNavItem";
-import NavItem from "../../../types/navItem.interface";
+import INavItem from "../../../types/navItem.interface";
 
 interface Props {
-  navItems: NavItem[];
+  navItems: INavItem[];
 }
 
 const MobileNav: React.FC<Props> = ({ navItems }) => {

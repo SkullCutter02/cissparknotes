@@ -13,7 +13,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-import NavItem from "../../../types/navItem.interface";
+import INavItem from "../../../types/navItem.interface";
 
 const Navbar: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
 
 export default Navbar;
 
-const navItems: Array<NavItem> = [
+const navItems: Array<INavItem> = [
   {
     label: "Inspiration",
     children: [

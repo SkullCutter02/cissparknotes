@@ -1,6 +1,6 @@
-export default interface NavItem {
+export default interface INavItem {
   label: string;
   subLabel?: string;
-  children?: Array<NavItem>;
+  children?: Array<INavItem>;
   href?: string;
 }

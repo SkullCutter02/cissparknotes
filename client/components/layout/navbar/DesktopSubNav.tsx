@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Flex, Icon, Link, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import NavItem from "../../../types/navItem.interface";
+import INavItem from "../../../types/navItem.interface";
 
 interface Props {
-  navItem: NavItem;
+  navItem: INavItem;
 }
 
 const DesktopSubNav: React.FC<Props> = ({ navItem: { href, subLabel, label } }) => {

@@ -2,10 +2,10 @@ import React from "react";
 import { Collapse, Flex, Icon, Link, Stack, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
-import NavItem from "../../../types/navItem.interface";
+import INavItem from "../../../types/navItem.interface";
 
 interface Props {
-  navItem: NavItem;
+  navItem: INavItem;
 }
 
 const MobileNavItem: React.FC<Props> = ({ navItem: { label, href, children } }) => {

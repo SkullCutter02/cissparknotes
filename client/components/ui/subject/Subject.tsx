@@ -1,12 +1,20 @@
 import React from "react";
 import { Box, Image, Text } from "@chakra-ui/react";
 
-const Subject: React.FC = () => {
+import IResponseData from "../../../types/responseData.interface";
+import ISubject from "../../../types/subject.interface";
+import HOST from "../../../constants/host";
+
+interface Props {
+  subjectData: IResponseData<ISubject>;
+}
+
+const Subject: React.FC<Props> = ({ subjectData: { attributes: subject } }) => {
   return (
     <>
       <Box borderWidth={"1px"} borderRadius={"lg"} w={"100%"} overflow={"hidden"} p={4}>
         <Image
-          src={"https://covers.zlibcdn2.com/covers/books/b8/e4/d7/b8e4d737d45edde3d598b251d6acc8c0.jpg"}
+          src={HOST + subject.image.data.attributes.formats.large.url}
           w={"100%"}
           h={{ base: "240px", sm: "350px" }}
           objectFit={"cover"}
@@ -21,10 +29,10 @@ const Subject: React.FC = () => {
             textDecoration: "underline",
           }}
         >
-          《雷雨》
+          《{subject.name}》
         </Text>
         <Text textAlign={"center"} mt={1} color={"gray.600"} fontSize={{ base: 14, md: 17 }}>
-          曹禺
+          {subject.author}
         </Text>
       </Box>
     </>
