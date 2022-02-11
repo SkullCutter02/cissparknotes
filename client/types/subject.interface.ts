@@ -6,7 +6,7 @@ import IResponseData from "./responseData.interface";
 export default interface ISubject extends IModel {
   name: string;
   author: string;
-  image: IImage;
+  image: string;
   sections?: {
     data: IResponseData<ISection>[];
   };

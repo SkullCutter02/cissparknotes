@@ -4,7 +4,6 @@ import Link from "next/link";
 
 import IResponseData from "../../../types/responseData.interface";
 import ISubject from "../../../types/subject.interface";
-import HOST from "../../../constants/host";
 
 interface Props {
   subjectData: IResponseData<ISubject>;
@@ -14,12 +13,7 @@ const Subject: React.FC<Props> = ({ subjectData: { id: subjectId, attributes: su
   return (
     <>
       <Box borderWidth={"1px"} borderRadius={"lg"} w={"100%"} overflow={"hidden"} p={4}>
-        <Image
-          src={HOST + subject.image.data.attributes.formats.large.url}
-          w={"100%"}
-          h={{ base: "240px", sm: "350px" }}
-          objectFit={"cover"}
-        />
+        <Image src={subject.image} w={"100%"} h={{ base: "240px", sm: "350px" }} objectFit={"cover"} />
         <Link href={`/${subjectId}`}>
           <Text
             textAlign={"center"}

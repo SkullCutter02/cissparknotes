@@ -4,7 +4,7 @@ import IResponseData from "../types/responseData.interface";
 import ISubject from "../types/subject.interface";
 
 const getSubjects = async (): Promise<IResponse<IResponseData<ISubject>[]>> => {
-  const { data } = await axios.get("subjects?populate=image");
+  const { data } = await axios.get("subjects");
   return data;
 };
 

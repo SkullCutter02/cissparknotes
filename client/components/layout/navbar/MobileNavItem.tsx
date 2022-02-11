@@ -1,6 +1,16 @@
 import React from "react";
-import { Collapse, Flex, Icon, Link, Stack, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
+import {
+  Collapse,
+  Flex,
+  Icon,
+  Link as ChakraLink,
+  Stack,
+  Text,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 import INavItem from "../../../types/navItem.interface";
 
@@ -15,8 +25,7 @@ const MobileNavItem: React.FC<Props> = ({ navItem: { label, href, children } }) 
     <Stack spacing={4} onClick={children && onToggle}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? "#"}
+        as={ChakraLink}
         justify={"space-between"}
         align={"center"}
         _hover={{
@@ -48,8 +57,8 @@ const MobileNavItem: React.FC<Props> = ({ navItem: { label, href, children } }) 
         >
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
+              <Link href={child.href} key={child.label}>
+                <ChakraLink py={2}>{child.label}</ChakraLink>
               </Link>
             ))}
         </Stack>
