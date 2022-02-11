@@ -20,19 +20,20 @@
     "sections": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::section.section"
+      "target": "api::section.section",
+      "mappedBy": "subject"
     },
     "author": {
       "type": "string",
       "maxLength": 20
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
