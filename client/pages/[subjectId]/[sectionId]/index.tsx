@@ -12,6 +12,7 @@ import IResponseData from "../../../types/responseData.interface";
 import ISection from "../../../types/section.interface";
 import MainContainer from "../../../components/ui/MainContainer";
 import { Image } from "@chakra-ui/react";
+import Navbar from "../../../components/layout/navbar/Navbar";
 
 type Data = IResponse<IResponseData<ISection>>;
 
@@ -35,6 +36,7 @@ const SectionPage: React.FC = () => {
 
   return (
     <>
+      <Navbar />
       <MainContainer>
         {data.attributes?.body && (
           <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={data.attributes.body} />

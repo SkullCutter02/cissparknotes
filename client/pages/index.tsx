@@ -6,10 +6,12 @@ import Subjects from "../components/ui/subject/Subjects";
 import getSubjects from "../queries/getSubjects";
 import MainContainer from "../components/ui/MainContainer";
 import getSubjectsWithSections from "../queries/getSubjectsWithSections";
+import Navbar from "../components/layout/navbar/Navbar";
 
 const HomePage: React.FC = () => {
   return (
     <>
+      <Navbar />
       <MainContainer>
         <Subjects />
       </MainContainer>

@@ -12,6 +12,7 @@ import MainContainer from "../../components/ui/MainContainer";
 import { Heading, VStack } from "@chakra-ui/react";
 import Section from "../../components/ui/section/Section";
 import getSubjectsWithSections from "../../queries/getSubjectsWithSections";
+import Navbar from "../../components/layout/navbar/Navbar";
 
 type Data = IResponse<IResponseData<ISubject>>;
 
@@ -24,6 +25,7 @@ const SubjectPage: React.FC = () => {
 
   return (
     <>
+      <Navbar />
       <MainContainer>
         <Heading textAlign={"center"}>《{data.attributes.name}》</Heading>
         <VStack spacing={0} align={"stretch"} mt={7}>

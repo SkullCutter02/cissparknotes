@@ -25,12 +25,10 @@ type Data = IResponse<IResponseData<ISubject>[]>;
 const Navbar: React.FC = () => {
   const { isOpen, onToggle } = useDisclosure();
 
-  const {
-    data: { data },
-  } = useQuery<Data>("subjects-nav", () => getSubjectsWithSections());
+  const { data } = useQuery<Data>("subjects-nav", () => getSubjectsWithSections());
 
   const navItems = useMemo(() => {
-    return data.map((subjectsData) => {
+    return data.data.map((subjectsData) => {
       return {
         label: subjectsData.attributes.name,
         href: `/${subjectsData.id}`,
@@ -91,6 +89,7 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
 //
 // const navItems: Array<INavItem> = [
 //   {

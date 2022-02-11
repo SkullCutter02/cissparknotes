@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <title>火花筆記</title>
         </Head>
         <ChakraProvider theme={theme}>
-          <Navbar />
+          {/*<Navbar />*/}
           <Component {...pageProps} />
         </ChakraProvider>
       </Hydrate>
