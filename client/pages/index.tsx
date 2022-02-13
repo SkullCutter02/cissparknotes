@@ -6,12 +6,11 @@ import Subjects from "../components/ui/subject/Subjects";
 import getSubjects from "../queries/getSubjects";
 import MainContainer from "../components/ui/MainContainer";
 import getSubjectsWithSections from "../queries/getSubjectsWithSections";
-import Navbar from "../components/layout/navbar/Navbar";
+import Layout from "../components/layout/Layout";
 
 const HomePage: React.FC = () => {
   return (
     <>
-      <Navbar />
       <MainContainer>
         <Subjects />
       </MainContainer>
@@ -31,5 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+(HomePage as any).Layout = Layout;
 
 export default HomePage;

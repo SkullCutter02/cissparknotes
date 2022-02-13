@@ -2,6 +2,7 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import { useRouter } from "next/router";
+import { Heading, VStack } from "@chakra-ui/react";
 
 import getSubject from "../../queries/getSubject";
 import getSubjects from "../../queries/getSubjects";
@@ -9,10 +10,9 @@ import IResponse from "../../types/response.interface";
 import IResponseData from "../../types/responseData.interface";
 import ISubject from "../../types/subject.interface";
 import MainContainer from "../../components/ui/MainContainer";
-import { Heading, VStack } from "@chakra-ui/react";
 import Section from "../../components/ui/section/Section";
 import getSubjectsWithSections from "../../queries/getSubjectsWithSections";
-import Navbar from "../../components/layout/navbar/Navbar";
+import Layout from "../../components/layout/Layout";
 
 type Data = IResponse<IResponseData<ISubject>>;
 
@@ -25,7 +25,6 @@ const SubjectPage: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <MainContainer>
         <Heading textAlign={"center"}>《{data.attributes.name}》</Heading>
         <VStack spacing={0} align={"stretch"} mt={7}>
@@ -62,5 +61,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
+
+(SubjectPage as any).Layout = Layout;
 
 export default SubjectPage;

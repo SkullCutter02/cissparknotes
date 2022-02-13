@@ -4,6 +4,7 @@ import { dehydrate, QueryClient, useQuery } from "react-query";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
+import { Image } from "@chakra-ui/react";
 
 import getSubjectsWithSections from "../../../queries/getSubjectsWithSections";
 import getSection from "../../../queries/getSection";
@@ -11,8 +12,7 @@ import IResponse from "../../../types/response.interface";
 import IResponseData from "../../../types/responseData.interface";
 import ISection from "../../../types/section.interface";
 import MainContainer from "../../../components/ui/MainContainer";
-import { Image } from "@chakra-ui/react";
-import Navbar from "../../../components/layout/navbar/Navbar";
+import Layout from "../../../components/layout/Layout";
 
 type Data = IResponse<IResponseData<ISection>>;
 
@@ -36,7 +36,6 @@ const SectionPage: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <MainContainer>
         {data.attributes?.body && (
           <ReactMarkdown components={ChakraUIRenderer(newTheme)} children={data.attributes.body} />
@@ -74,5 +73,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
+
+(SectionPage as any).Layout = Layout;
 
 export default SectionPage;

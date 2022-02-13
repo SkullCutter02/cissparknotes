@@ -8,6 +8,7 @@ import {
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 import DesktopSubNav from "./DesktopSubNav";
 import INavItem from "../../../types/navItem.interface";
@@ -37,7 +38,7 @@ const DesktopNav: React.FC<Props> = ({ navItems }) => {
                   color: linkHoverColor,
                 }}
               >
-                {navItem.label}
+                <Link href={navItem.href}>{navItem.label}</Link>
               </ChakraLink>
             </PopoverTrigger>
 
